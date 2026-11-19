@@ -1150,6 +1150,219 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/solutions/general-planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution: General Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/scenario-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scenario Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/item-revisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item Revisions and Frozen Plans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/shared-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/plan-branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/layered-cube-posting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Cube Posting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterns/features/stored-plan-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stored Plan Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3869,13 +4082,13 @@
 <td>Navigation group</td>
 <td>The group of page buttons your solution adds under that menu, normally one per solution, named after it. Created once, with its first page</td>
 <td><code>ProjectTracking</code></td>
-<td>Letters and digits only. No spaces or underscores</td>
+<td>Letters and digits only. No spaces, underscores, dashes, periods or other punctuation. Not <code>All</code>, which OneStream refuses</td>
 </tr>
 <tr>
 <td>Page</td>
 <td>One page button in that navigation group</td>
 <td><code>Projects</code>, <code>Supporting</code></td>
-<td>Letters and digits only. No spaces or underscores</td>
+<td>Letters and digits only. No spaces, underscores, dashes, periods or other punctuation. Not <code>All</code>, which OneStream refuses</td>
 </tr>
 </tbody>
 </table>
@@ -3980,14 +4193,14 @@
 </blockquote>
 <p>Claude gives you the names and layout to create in Step 2, here <code>Home</code> / <code>Journals</code> / <code>Journals</code> with the stacked layout <code>pge_RfaConItm101_Set1000_0_ContentItem</code>. It also writes one row per page in <code>420-&lt;Solution&gt;-pages.json</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&quot;ViewId_IntegrationCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{RfaCore}.SolSettingValue_LinkedPage_mE&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">&quot;Rows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">"ViewId_IntegrationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{RfaCore}.SolSettingValue_LinkedPage_mE"</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="nt">"Rows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">          </span><span class="nt">&quot;SolSetVal_IntegrationCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Home_Journals_Journals_Set1000&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">          </span><span class="nt">&quot;SolSetVal_Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Home_Journals_Journals_Set1000&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">          </span><span class="nt">&quot;SolSetVal_SettingValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;LnkPgeRef&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Home_Journals_Journals_Set1000&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;InTrnstMd&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;VwrCntxtSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">          </span><span class="nt">"SolSetVal_IntegrationCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home_Journals_Journals_Set1000"</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">          </span><span class="nt">"SolSetVal_Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home_Journals_Journals_Set1000"</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">          </span><span class="nt">"SolSetVal_SettingValue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"LnkPgeRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Home_Journals_Journals_Set1000"</span><span class="p">,</span><span class="w"> </span><span class="nt">"InTrnstMd"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">"VwrCntxtSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="p">}</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="p">]</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">}</span>

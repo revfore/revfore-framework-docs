@@ -985,6 +985,219 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/solutions/general-planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution: General Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/scenario-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scenario Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/item-revisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item Revisions and Frozen Plans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/shared-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/plan-branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/layered-cube-posting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Cube Posting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../extending/patterns/features/stored-plan-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stored Plan Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4125,15 +4338,21 @@
 </table>
 <p><strong>Built into the view (1 and 5).</strong> The clause is resolved once, when the view's SQL is created by Sync or Setup. There is no user and no workflow at that moment, so a clause that uses <code>{CurrentUserId}</code>, <code>{WfUnitId}</code>, <code>{WfCycleYear}</code> or any other user or workflow value is refused on import - it would hold the value of whoever synced, for everyone. Use Flags 2 for those.</p>
 <p><strong>Flags 5</strong> filters on a model column without adding it to the view. That matters most on a summary view: every column there is either grouped or totalled, so a column added only to filter on would also have to be grouped by - which splits the totals if its values vary. With Flags 5 the view groups only by the columns you chose.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Clause&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{PrtMsr_Code} = {P1} and {PrtPln_IsCycleYear} = 1&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;Parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sales&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;Flags&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"Clause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{PrtMsr_Code} = {P1} and {PrtPln_IsCycleYear} = 1"</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">"Parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P1"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p><strong>Applied every time (2).</strong> The clause is added to each query on the view, with the user's own workflow - so <code>{PrtPln_Year} = {WfCycleYear}</code> shows each user the rows for the cycle they are in. You can give a view one built-in clause and any number of run-time ones as a list; they are combined with AND.</p>
 <p><strong>Other tables.</strong> A clause can look at a table the view doesn't show, for example in an <code>exists</code> subquery. Name the table with a schema token, as import files do: <code>{RfaCore}.WfCycle</code>, <code>{RfaExtension}.PrtPlanLine</code> or <code>{OsCore}.XFC_Something</code>. The token resolves to the application's own schema, so the clause works in any environment. Never write the schema's name itself (<code>rfa01</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;Clause&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exists (select 1 from {RfaCore}.WfCycle_Unit iu where iu.WfCycleId = {WfCycleId} and iu.WfUnitId = {PrtPln_WfUnitId})&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;Flags&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"Clause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exists (select 1 from {RfaCore}.WfCycle_Unit iu where iu.WfCycleId = {WfCycleId} and iu.WfUnitId = {PrtPln_WfUnitId})"</span><span class="p">,</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
+<p><strong>What a clause may contain.</strong> A clause is a condition on names - <code>{Column}</code> tokens, <code>[bracketed names]</code>,
+schema-token tables - and its <strong>values always go in as Parameters</strong>, as in the examples above (<code>{P1}</code>), never typed
+into the clause as quoted text. A clause is one condition, not a statement: it can't contain a quoted value, a second
+statement, a comment or a variable, and its parentheses must balance. A clause that breaks this is refused when it is
+saved or imported, and the message names the field and the reason. The same applies to filter expressions, lookup
+filters and a model source's additional join clause.</p>
 <div class="admonition note workflow columns still belong on the view">
 <p class="admonition-title">Note</p>
 <p>A workflow-enabled view keeps its cycle and unit columns, even if nobody looks at them: the Framework's own workflow filtering runs when the view is read, against those columns.</p>

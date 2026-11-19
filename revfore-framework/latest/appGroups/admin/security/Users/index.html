@@ -985,6 +985,219 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/solutions/general-planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution: General Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/scenario-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scenario Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/item-revisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item Revisions and Frozen Plans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/shared-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/plan-branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/layered-cube-posting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Cube Posting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/stored-plan-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stored Plan Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1431,6 +1644,15 @@
   
     <nav class="md-nav" aria-label="Debug logging">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter values
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#filtering-the-output" class="md-nav__link">
@@ -3721,6 +3943,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#parameter-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#filtering-the-output" class="md-nav__link">
     <span class="md-ellipsis">
       Filtering the output
@@ -3894,7 +4125,7 @@
 <td>Debug</td>
 <td>int</td>
 <td>Turns on diagnostic logging for this user.</td>
-<td>Off, On, On (JSON), On (verbose) or On (verbose, JSON). Set by a user with the Developer or Revfore Administrator <a href="../Roles/">security role</a>, for any user. See <a href="#debug-logging">Debug logging</a>.</td>
+<td>Off, On, On (JSON), On (verbose), On (verbose, JSON), On (verbose, values) or On (verbose, JSON, values). Set by a user with the Developer or Revfore Administrator <a href="../Roles/">security role</a>, for any user; the <strong>values</strong> options can be switched on only by a Revfore Administrator. See <a href="#debug-logging">Debug logging</a> and <a href="#parameter-values">Parameter values</a>.</td>
 </tr>
 <tr>
 <td>Debug Until</td>
@@ -3969,7 +4200,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    parameterSet=1000
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    readOnly=true
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    rules=ParentUnit,WfStatus
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    detail=&quot;Parent unit, ...&quot;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    detail="Parent unit, ..."
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>[DEBUG] user=chris category=SECURITY at=rfa_shared_os.SolutionHelper.MainClass.CheckAndSetSecurityValuesOnViewerBaseSettings
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    check=view
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    view=PrjBudget_mE
@@ -3978,16 +4209,26 @@
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    result=lockedDown
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>[DEBUG] user=chris category=SQL ms=38 source=GetDataTable at=rel.ViewerBaseSettings.Get_DataTable
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    view=PrjTask_mE
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    detail=
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        select PrjTsk_Name, PrjTsk_Status, ...
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        from [rfa01].PrjTask_mE v
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        where PrjTsk_IsEnabled = 1
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        order by PrjTsk_Name ASC
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    params=@rfaVf0=string(6)
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    detail=
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        select PrjTsk_Name, PrjTsk_Status, ...
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        from [rfa01].[PrjTask_mE] v
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        where [PrjTsk_Name] like @rfaVf0 and [PrjTsk_IsEnabled] = 1
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        order by PrjTsk_Name ASC
 </code></pre></div>
+<p>Values never appear in the SQL: every value a statement uses - a filter typed in the grid, a record key, a date - is
+sent to the database separately as a parameter, and the SQL shows its placeholder (<code>@rfaVf0</code>). The <code>params</code> field
+lists each placeholder with its type and size (<code>string(6)</code>, <code>Int32</code>), never the value itself. To see the values, see
+<a href="#parameter-values">Parameter values</a>.</p>
 <p>A long detail with line breaks, such as a SQL statement, is written as indented lines under <code>detail=</code>, so it reads as it would in a query window.</p>
 <p>The <strong>verbose</strong> options write more where the default is deliberately brief. Posting to the cube, for example, normally lists only the cells a posting changed; verbose lists every cell, the columns used and the query. Use it only when the default is not enough, because it can be large. Entries written in verbose mode start with <code>[DEBUG verbose]</code> instead of <code>[DEBUG]</code>.</p>
+<p>Verbose also writes one line for <strong>every statement</strong> sent to the database, with <code>source=Statement</code>: category <code>SQL</code>
+for a read (with its row count) or <code>SAVE</code> for a change, how long it took, a short chain of the methods that ran it
+(<code>at=rel.Lookup.Load&lt;rel.ViewerBaseSettings.Get_Lookups</code>), its parameters (names and sizes) and the statement. It shows
+exactly what a screen or an action asked the database, in order. A screen can run dozens of statements, so filter on
+<code>category=SQL</code> or <code>category=SAVE</code> with a view or table name (see <a href="#filtering-the-output">Filtering the output</a>).</p>
 <p>Set <strong>Debug</strong> to <strong>On (JSON)</strong> instead to get each line as one JSON object — for feeding the log to a tool or an AI agent:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{&quot;debug&quot;:true,&quot;user&quot;:&quot;chris&quot;,&quot;category&quot;:&quot;SQL&quot;,&quot;ms&quot;:38,&quot;source&quot;:&quot;GetDataTable&quot;,&quot;at&quot;:&quot;rel.ViewerBaseSettings.Get_DataTable&quot;,&quot;view&quot;:&quot;PrjTask_mE&quot;,&quot;detail&quot;:&quot;select ...&quot;}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{"debug":true,"user":"chris","category":"SQL","ms":38,"source":"GetDataTable","at":"rel.ViewerBaseSettings.Get_DataTable","view":"PrjTask_mE","detail":"select ..."}
 </code></pre></div>
 <table>
 <thead>
@@ -4063,6 +4304,28 @@
 <li>Set <strong>Debug</strong> to <strong>On</strong>, and <strong>Debug Until</strong> to the last day you need it</li>
 <li>Click <strong>Save</strong>, and ask the user to close and reopen the page and repeat what they were doing</li>
 </ol>
+<h3 id="parameter-values">Parameter values</h3>
+<p>Sometimes a problem depends on the value a statement used - which customer, which date, what was typed in a filter.
+The <strong>values</strong> options, <strong>On (verbose, values)</strong> and <strong>On (verbose, JSON, values)</strong>, add each statement's parameter
+values to its line, <strong>encrypted</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[DEBUG verbose] user=chris category=SQL ms=4 source=Statement at=rel.Lookup.Load&lt;rel.ViewerBaseSettings.Get_Lookups
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    label=Lookup.Load
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    params=@Lk0=string(10),@Lk1=Int32
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    values=enc:...
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    detail=select ... where Name like @Lk0 and RegionId = @Lk1
+</code></pre></div>
+<p>The rest of the line stays readable, so most problems can still be worked out from it. The values themselves can be read
+only on <strong>Config | Other | Decrypt Error Log</strong>, by a Revfore Administrator - see <a href="../../../config/other/#decrypt-error-log">Other</a>.</p>
+<ul>
+<li>Only a <strong>Revfore Administrator</strong> can switch a values option on, because it captures real business data. Anyone who can
+  change debug settings can switch it off again.</li>
+<li>Statements on settings and secrets are never logged with values, not even encrypted - their line shows
+  <code>values=redacted</code>. A statement with no parameters shows <code>values=none</code>.</li>
+<li>Values longer than 200 characters are cut, with their full length shown.</li>
+<li>Decrypting happens only in that Config page, inside OneStream - there is no other way to read the values, so log
+  entries can be shared, exported or attached to a support request without exposing them.</li>
+<li>As with all debug options, set <strong>Debug Until</strong>, and turn the values option off when you have what you need.</li>
+</ul>
 <h3 id="filtering-the-output">Filtering the output</h3>
 <p>Debug output is detailed. To keep only the lines you care about, put a filter in <strong>Debug Filter</strong>:</p>
 <table>

@@ -985,6 +985,219 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/solutions/general-planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution: General Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/scenario-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scenario Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/item-revisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item Revisions and Frozen Plans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/shared-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/plan-branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/layered-cube-posting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Cube Posting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../extending/patterns/features/stored-plan-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stored Plan Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3885,14 +4098,15 @@ delete roles - otherwise a user holding a role could map their own group to ever
 <tr>
 <td>Developer</td>
 <td><code>Developer</code></td>
-<td>Switching debug logging, and verbose debug, on for a user. Give it to developers, or an agent account, who need debug without administrator rights.</td>
+<td>Switching debug logging, and verbose debug, on for a user. Give it to developers, or an agent account, who need debug without administrator rights. The debug options that capture parameter <strong>values</strong> need a Revfore Administrator to switch on (a Developer can switch them off), and only a Revfore Administrator can read those values - see <a href="../Users/#parameter-values">Parameter values</a>.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="what-stays-with-onestream-administrators">What stays with OneStream administrators</h3>
 <p>These need membership of OneStream's <strong>Administrators</strong> group, whatever the roles are mapped to:</p>
 <ul>
-<li>installing, upgrading and uninstalling Revfore - <strong>Setup &amp; Upgrade</strong>, <strong>Uninstall</strong>, <strong>Create New Instance</strong></li>
+<li>installing, upgrading and uninstalling Revfore - <strong>Setup &amp; Upgrade</strong>, <strong>Uninstall</strong>, <strong>Create New Instance</strong> (the
+  Config pages for these refuse anyone else when they open - see <a href="../../../config/#who-can-use-config">Who can use Config</a>)</li>
 <li><strong>Run Maintenance Scripts</strong>, and any setup package that contains SQL</li>
 <li>adding or changing security roles</li>
 <li>changing Revfore's own tables, models, views and lookups, or anything under them - their columns, indexes,
@@ -3903,6 +4117,11 @@ delete roles - otherwise a user holding a role could map their own group to ever
 that lets you edit its rows in the grid, including write access to any column the file sets that is secured
 separately. A file that loads into a view you can't write to is refused, names the view, and saves nothing. A file
 that adds or changes tables, models or views needs the Revfore Administrator role.</p>
+<p>The rows are checked too, against the workflow they belong to: you need edit access to each <strong>cycle and unit</strong> the rows
+are in or move to, and the workflow status of each of those cycles and units must allow changes. A file that writes
+into a closed cycle or a unit you can't edit is refused the same way. A view's <strong>editability</strong> - read-only, or no
+Add, Edit or Delete in the grid - does not stop a data file: it says what the grid offers on screen, so a read-only
+list a solution seeds, such as its statuses, still loads.</p>
 <p>The same check applies wherever you change data: saving in the grid, <strong>File Import</strong>, <strong>Delete</strong>, <strong>Copy</strong> and
 <strong>Bulk Update</strong> (which also needs write access to the column you choose). Exporting follows your <strong>read access</strong>:
 <strong>File Export</strong> and <strong>Extract</strong> leave out columns you can't see in the grid, and Extract skips a view you can't open.</p>

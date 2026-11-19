@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://docs.revfore.com/revfore-framework/PV921-SV200/appGroups/config/">
       
       
-        <link rel="prev" href="../../extending/writing-code/">
+        <link rel="prev" href="../../extending/patterns/features/stored-plan-summary/">
       
       
         <link rel="next" href="manage-license-key/">
@@ -985,6 +985,219 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design Patterns
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Design Patterns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/solutions/general-planning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution: General Planning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/scenario-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scenario Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/item-revisions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Item Revisions and Frozen Plans
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/shared-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Drivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/plan-branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plan Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/layered-cube-posting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layered Cube Posting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extending/patterns/features/stored-plan-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stored Plan Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1129,6 +1342,15 @@
   <a href="#config-sections" class="md-nav__link">
     <span class="md-ellipsis">
       Config Sections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-can-use-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who can use Config
     </span>
   </a>
   
@@ -3613,6 +3835,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#who-can-use-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who can use Config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#when-to-use-config" class="md-nav__link">
     <span class="md-ellipsis">
       When to Use Config
@@ -3658,6 +3889,28 @@
 <li><a href="run-maintenance-scripts/">Run Maintenance Scripts</a></li>
 <li><a href="other/">Other</a></li>
 </ul>
+<h2 id="who-can-use-config">Who can use Config</h2>
+<p>Each page checks who you are when it opens, and refuses anyone without the right:</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="manage-license-key/">Manage License Key</a>, <a href="other/">Other</a></td>
+<td>A <strong>Revfore Administrator</strong> (the <code>RevforeAdmin</code> <a href="../admin/security/Roles/">security role</a>)</td>
+</tr>
+<tr>
+<td><a href="setup-upgrade/">Setup &amp; Upgrade</a>, <a href="create-new-instance/">Create New Instance</a>, <a href="uninstall/">Uninstall</a>, <a href="run-maintenance-scripts/">Run Maintenance Scripts</a></td>
+<td>A member of OneStream's <strong>Administrators</strong> group, not viewing the application as another user</td>
+</tr>
+</tbody>
+</table>
+<p>OneStream administrators hold every Revfore role, so they can use every page - including on a new install, before Setup
+has created any of Revfore's tables.</p>
 <h2 id="when-to-use-config">When to Use Config</h2>
 <p>Use the Config application group when you need to:</p>
 <ul>
