@@ -43,6 +43,15 @@ nav:
       - Solution Pages: extending/pages.md
       - Setup Packages: extending/setup-packages.md
       - Writing Extension Code: extending/writing-code.md
+      - Design Patterns:
+          - Overview: extending/patterns/index.md
+          - "Solution: General Planning": extending/patterns/solutions/general-planning.md
+          - Scenario Flags: extending/patterns/features/scenario-flags.md
+          - Item Revisions and Frozen Plans: extending/patterns/features/item-revisions.md
+          - Shared Drivers: extending/patterns/features/shared-drivers.md
+          - Plan Branches: extending/patterns/features/plan-branches.md
+          - Layered Cube Posting: extending/patterns/features/layered-cube-posting.md
+          - Stored Plan Summary: extending/patterns/features/stored-plan-summary.md
   - Application Groups:
       - Config:
           - Overview: appGroups/config/index.md
