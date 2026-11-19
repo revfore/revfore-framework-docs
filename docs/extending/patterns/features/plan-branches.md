@@ -38,12 +38,9 @@ Use it when people need to change closed numbers in a controlled way, or to mode
   - **Promote To Master** copies changes into master Working revisions (drivers: Drafts). It skips items master changed
     since the snapshot unless confirmed.
   - **Discard** clears the proposal's cube layer and frees it.
-- **Picking a branch.**
-  - A workflow context handler adds **Branch** and **Compare Branch 1 / 2** to the Framework's Change Workflow dialog.
-    It keeps the picks on the user's workflow context.
-  - Grids follow the pick with no handler code, through a run-time where clause on `{WfExtInt_BP_Branch}` that calls
-    `BpBranchRevisions`.
-  - The cube views follow it through scope UD6 on the member sets.
+- **Picking a branch.** Branch and Compare Branch 1 / 2 are fields added to the Framework's Change Workflow dialog.
+  Grids follow the pick through a run-time filter on `{WfExtInt_BP_Branch}` that calls `BpBranchRevisions`. See
+  [Workflow Context](workflow-context.md).
 - **A fixed UD6 member pool** (`BpBranchMember`: V1-V3 and P1-P3, each with a `_Total` parent) is handed out in order.
   Opening a branch is refused when the pool is used up. See [Layered Cube Posting](layered-cube-posting.md).
 

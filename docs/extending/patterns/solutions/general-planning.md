@@ -32,8 +32,9 @@ own names say "forecast"; see [Words used](../index.md#words-used).
   [Layered Cube Posting](../features/layered-cube-posting.md).
 - **A stored plan summary** per cycle and unit, rolled up the unit hierarchy and kept current on write. Reports,
   pivots and posting all read it. See [Stored Plan Summary](../features/stored-plan-summary.md).
-- **Scenario comparison** through the Framework's workflow compare-tos: a cycle plans Baseline and compares to the Plan and
-  Upside.
+- **One workflow selection drives everything.** Cycle, unit and two compare-tos are picked once in Change Workflow,
+  and every page follows. Business Planning extends the selection with a workflow scenario per planning scenario and a
+  plan branch beside each compare-to. See [Workflow Context](../features/workflow-context.md).
 
 The solution does **not** have plan-to-actual comparison. A cycle's `ActualEndPeriod` (a core column) only sets where
 the plan starts. It has no financial-statement engine either: accounts come from category member sets.
@@ -93,6 +94,8 @@ Most solutions need only some of these:
 - [Layered Cube Posting](../features/layered-cube-posting.md): add when scenarios or plan branches must be compared in the
   cube.
 - [Stored Plan Summary](../features/stored-plan-summary.md): needed at volume and for posting.
+- [Workflow Context](../features/workflow-context.md): the core is needed whenever there is more than one cycle or
+  unit. Its scenario and branch parts come with the patterns above.
 
 ## Adaptation guidance
 

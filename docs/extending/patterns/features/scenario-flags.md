@@ -29,9 +29,8 @@ more than one scenario and most assumptions are shared.
   flags contain the bit. Driver rows are flagged the same way.
 - **Results are compressed.** Adjacent equal months become one range, and scenarios with identical results share one
   `WfItem_Activity_Period` row whose `ScenarioFlags` holds all of their bits.
-- **Comparison in the UI** uses the Framework's workflow scenarios and compare-tos:
-  - three workflow scenarios per cycle year, all on the cycle's one cube Scenario, told apart by a UD5 member set;
-  - each cycle plans Baseline and sets Compare To 1 = Plan and Compare To 2 = Upside.
+- **Comparison in the UI** uses one workflow scenario per planning scenario and the Framework's compare-tos. See
+  [Workflow Context](workflow-context.md).
 
 ## Framework capabilities
 

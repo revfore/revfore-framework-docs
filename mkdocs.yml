@@ -52,6 +52,7 @@ nav:
           - Plan Branches: extending/patterns/features/plan-branches.md
           - Layered Cube Posting: extending/patterns/features/layered-cube-posting.md
           - Stored Plan Summary: extending/patterns/features/stored-plan-summary.md
+          - Workflow Context: extending/patterns/features/workflow-context.md
   - Application Groups:
       - Config:
           - Overview: appGroups/config/index.md

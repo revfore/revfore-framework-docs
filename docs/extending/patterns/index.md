@@ -21,6 +21,7 @@ Design patterns taken from working Revfore Framework solutions, for AI tools (an
 | [Plan Branches: Versions and Proposals](features/plan-branches.md) | Feature | Business Planning |
 | [Layered Cube Posting](features/layered-cube-posting.md) | Feature | Business Planning |
 | [Stored Plan Summary](features/stored-plan-summary.md) | Feature | Business Planning |
+| [Workflow Context](features/workflow-context.md) | Feature | Business Planning |
 
 File names in a pattern refer to these places:
 - **`solutions/<Solution>/...` and handler folders (`BpHandlers/...`):** the source solution's files, delivered with
