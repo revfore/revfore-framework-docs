@@ -23,8 +23,8 @@ Every page has a **linked page reference**, built from the three names you give 
 | Name | What it is | Example | Rule |
 |---|---|---|---|
 | Application group | The top-level menu the page lives under | `Home` | One of `Home`, `Admin` or `Config`. You can't create your own |
-| Navigation group | The group of page buttons your solution adds under that menu, normally one per solution, named after it. Created once, with its first page | `ProjectTracking` | Letters and digits only. No spaces or underscores |
-| Page | One page button in that navigation group | `Projects`, `Supporting` | Letters and digits only. No spaces or underscores |
+| Navigation group | The group of page buttons your solution adds under that menu, normally one per solution, named after it. Created once, with its first page | `ProjectTracking` | Letters and digits only. No spaces, underscores, dashes, periods or other punctuation. Not `All`, which OneStream refuses |
+| Page | One page button in that navigation group | `Projects`, `Supporting` | Letters and digits only. No spaces, underscores, dashes, periods or other punctuation. Not `All`, which OneStream refuses |
 
 **Which application group:**
 

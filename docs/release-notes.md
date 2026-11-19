@@ -153,6 +153,49 @@ and exports, setup packages, structure sync and solution code are all covered.
 
 See [Manage License Key](appGroups/config/manage-license-key.md).
 
+### Values sent as parameters, and clauses checked
+
+Every value the Framework sends to the database - a filter typed in a grid, a record key, a date, a lookup code - now
+goes as a **parameter**, separate from the SQL, rather than written into it. A value can no longer change what a
+statement does, whatever it contains.
+
+Where clauses, filter expressions, lookup filters and join clauses are checked when they are saved or imported: a
+clause is a condition on names, with its values as Parameters. One that contains a quoted value, a second statement or a
+comment is refused, and the message names the field. Existing clauses that follow the documented form are unaffected.
+See [Where Clause](appGroups/admin/relational/relationalViews/views.md#where-clause).
+
+### Parameter values in debug logs, encrypted
+
+Two new debug options, **On (verbose, values)** and **On (verbose, JSON, values)**, add each statement's parameter
+values to the debug log - **encrypted**, so log entries can still be shared, exported or attached to a support request.
+A Revfore Administrator switches them on and reads the values on the new **Config | Other | Decrypt Error Log** form:
+paste log entries, click Decrypt, and the values appear in place. Every decrypt is recorded.
+
+Verbose debug also writes one line for every statement sent to the database, with its timing, the code that ran it and
+its parameters (names and sizes, never values).
+
+See [Parameter values](appGroups/admin/security/Users/index.md#parameter-values) and
+[Decrypt Error Log](appGroups/config/other.md#decrypt-error-log).
+
+### Config pages by role
+
+Each Config page now checks who opens it. **Manage License Key** and **Other** are for a Revfore Administrator;
+**Setup & Upgrade**, **Create New Instance**, **Uninstall** and **Run Maintenance Scripts** stay with OneStream
+administrators. Anyone else is refused when the page opens, instead of at the button. The setup, upgrade, instance,
+maintenance and uninstall pages also show the version and build in their title (for example `PV921-SV200-B797`).
+See [Who can use Config](appGroups/config/index.md#who-can-use-config).
+
+### Data loads and workflow
+
+A data load is now checked against the workflow its rows belong to: edit access to each cycle and unit the rows are in,
+and a workflow status that allows changes. A view's on-screen editability does not apply to a load, so a read-only list
+a solution seeds, such as its statuses, still loads. See [Loading data files](appGroups/admin/security/Roles/index.md#loading-data-files).
+
+### Search kept within a navigation group
+
+The text in a grid's search box now carries across the pages of one navigation group - search on one page and it still
+applies on the next - and is cleared when you move to another navigation group.
+
 ### View Filters
 
 Filters can now be **defined on a view and then selected when that view is added to a Genesis page**.

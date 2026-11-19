@@ -64,13 +64,14 @@ delete roles - otherwise a user holding a role could map their own group to ever
 | Role | Integration Code | Covers |
 |---|---|---|
 | Revfore Administrator | `RevforeAdmin` | Configuring the Framework's **extension** tables, models, views and pages: creating models and views, adding columns, sources, relationships and actions to them, resequencing columns, syncing their database structure, dropping database tables and views, rebuilding SQL views, adding table and view definitions, configuring pages, relinking to OneStream records, loading files that contain structure, and loading setup packages that contain no SQL. Also syncing users, security groups, cubes and dimensions with OneStream, viewing the application as another user, debug settings, and the license key. |
-| Developer | `Developer` | Switching debug logging, and verbose debug, on for a user. Give it to developers, or an agent account, who need debug without administrator rights. |
+| Developer | `Developer` | Switching debug logging, and verbose debug, on for a user. Give it to developers, or an agent account, who need debug without administrator rights. The debug options that capture parameter **values** need a Revfore Administrator to switch on (a Developer can switch them off), and only a Revfore Administrator can read those values - see [Parameter values](../Users/index.md#parameter-values). |
 
 ### What stays with OneStream administrators
 
 These need membership of OneStream's **Administrators** group, whatever the roles are mapped to:
 
-- installing, upgrading and uninstalling Revfore - **Setup & Upgrade**, **Uninstall**, **Create New Instance**
+- installing, upgrading and uninstalling Revfore - **Setup & Upgrade**, **Uninstall**, **Create New Instance** (the
+  Config pages for these refuse anyone else when they open - see [Who can use Config](../../../config/index.md#who-can-use-config))
 - **Run Maintenance Scripts**, and any setup package that contains SQL
 - adding or changing security roles
 - changing Revfore's own tables, models, views and lookups, or anything under them - their columns, indexes,
@@ -82,6 +83,12 @@ Loading a data file does not need a role. Each view the file loads into needs yo
 that lets you edit its rows in the grid, including write access to any column the file sets that is secured
 separately. A file that loads into a view you can't write to is refused, names the view, and saves nothing. A file
 that adds or changes tables, models or views needs the Revfore Administrator role.
+
+The rows are checked too, against the workflow they belong to: you need edit access to each **cycle and unit** the rows
+are in or move to, and the workflow status of each of those cycles and units must allow changes. A file that writes
+into a closed cycle or a unit you can't edit is refused the same way. A view's **editability** - read-only, or no
+Add, Edit or Delete in the grid - does not stop a data file: it says what the grid offers on screen, so a read-only
+list a solution seeds, such as its statuses, still loads.
 
 The same check applies wherever you change data: saving in the grid, **File Import**, **Delete**, **Copy** and
 **Bulk Update** (which also needs write access to the column you choose). Exporting follows your **read access**:

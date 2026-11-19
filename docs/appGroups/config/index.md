@@ -15,6 +15,18 @@ The Config application group includes the following sections:
 - [Run Maintenance Scripts](run-maintenance-scripts.md)
 - [Other](other.md)
 
+## Who can use Config
+
+Each page checks who you are when it opens, and refuses anyone without the right:
+
+| Page | Who |
+|---|---|
+| [Manage License Key](manage-license-key.md), [Other](other.md) | A **Revfore Administrator** (the `RevforeAdmin` [security role](../admin/security/Roles/index.md)) |
+| [Setup & Upgrade](setup-upgrade.md), [Create New Instance](create-new-instance.md), [Uninstall](uninstall.md), [Run Maintenance Scripts](run-maintenance-scripts.md) | A member of OneStream's **Administrators** group, not viewing the application as another user |
+
+OneStream administrators hold every Revfore role, so they can use every page - including on a new install, before Setup
+has created any of Revfore's tables.
+
 ## When to Use Config
 
 Use the Config application group when you need to:

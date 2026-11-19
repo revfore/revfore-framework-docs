@@ -53,7 +53,7 @@ The following fields are shown for a User record. All are populated from OneStre
 | Effective End Date | date | Date the user stops being active. | Defaults to 2999-12-31. Use this rather than deleting a user who has left.
 | Is Enabled | bit | Indicates whether the user is enabled. |
 | Impersonate User | int | The user this administrator is currently viewing the application as. | Editable only by an administrator, only on their own record. Blank when not impersonating. See [Viewing as Another User](../../../../security/impersonation.md).
-| Debug | int | Turns on diagnostic logging for this user. | Off, On, On (JSON), On (verbose) or On (verbose, JSON). Set by a user with the Developer or Revfore Administrator [security role](../Roles/index.md), for any user. See [Debug logging](#debug-logging).
+| Debug | int | Turns on diagnostic logging for this user. | Off, On, On (JSON), On (verbose), On (verbose, JSON), On (verbose, values) or On (verbose, JSON, values). Set by a user with the Developer or Revfore Administrator [security role](../Roles/index.md), for any user; the **values** options can be switched on only by a Revfore Administrator. See [Debug logging](#debug-logging) and [Parameter values](#parameter-values).
 | Debug Until | date | The last day Debug stays on. | Blank keeps it on until it is turned off. Set a date so it switches itself off. A date in the past is moved to today whenever you save the debug settings with Debug on.
 | Debug Filter | nvarchar | Writes only the debug lines that match. | Blank writes everything. See [Filtering the output](#filtering-the-output).
 | Integration Code | nvarchar | Unique value for the user record. | This is readonly and provides a unique value for the record that is used for importing data
@@ -99,16 +99,28 @@ Each line starts with `[DEBUG] user=` and the user's name, so the log can be fil
     result=lockedDown
 [DEBUG] user=chris category=SQL ms=38 source=GetDataTable at=rel.ViewerBaseSettings.Get_DataTable
     view=PrjTask_mE
+    params=@rfaVf0=string(6)
     detail=
         select PrjTsk_Name, PrjTsk_Status, ...
-        from [rfa01].PrjTask_mE v
-        where PrjTsk_IsEnabled = 1
+        from [rfa01].[PrjTask_mE] v
+        where [PrjTsk_Name] like @rfaVf0 and [PrjTsk_IsEnabled] = 1
         order by PrjTsk_Name ASC
 ```
+
+Values never appear in the SQL: every value a statement uses - a filter typed in the grid, a record key, a date - is
+sent to the database separately as a parameter, and the SQL shows its placeholder (`@rfaVf0`). The `params` field
+lists each placeholder with its type and size (`string(6)`, `Int32`), never the value itself. To see the values, see
+[Parameter values](#parameter-values).
 
 A long detail with line breaks, such as a SQL statement, is written as indented lines under `detail=`, so it reads as it would in a query window.
 
 The **verbose** options write more where the default is deliberately brief. Posting to the cube, for example, normally lists only the cells a posting changed; verbose lists every cell, the columns used and the query. Use it only when the default is not enough, because it can be large. Entries written in verbose mode start with `[DEBUG verbose]` instead of `[DEBUG]`.
+
+Verbose also writes one line for **every statement** sent to the database, with `source=Statement`: category `SQL`
+for a read (with its row count) or `SAVE` for a change, how long it took, a short chain of the methods that ran it
+(`at=rel.Lookup.Load<rel.ViewerBaseSettings.Get_Lookups`), its parameters (names and sizes) and the statement. It shows
+exactly what a screen or an action asked the database, in order. A screen can run dozens of statements, so filter on
+`category=SQL` or `category=SAVE` with a view or table name (see [Filtering the output](#filtering-the-output)).
 
 Set **Debug** to **On (JSON)** instead to get each line as one JSON object — for feeding the log to a tool or an AI agent:
 
@@ -141,6 +153,32 @@ To turn it on:
 2. Edit the user's record
 3. Set **Debug** to **On**, and **Debug Until** to the last day you need it
 4. Click **Save**, and ask the user to close and reopen the page and repeat what they were doing
+
+### Parameter values
+
+Sometimes a problem depends on the value a statement used - which customer, which date, what was typed in a filter.
+The **values** options, **On (verbose, values)** and **On (verbose, JSON, values)**, add each statement's parameter
+values to its line, **encrypted**:
+
+```
+[DEBUG verbose] user=chris category=SQL ms=4 source=Statement at=rel.Lookup.Load<rel.ViewerBaseSettings.Get_Lookups
+    label=Lookup.Load
+    params=@Lk0=string(10),@Lk1=Int32
+    values=enc:...
+    detail=select ... where Name like @Lk0 and RegionId = @Lk1
+```
+
+The rest of the line stays readable, so most problems can still be worked out from it. The values themselves can be read
+only on **Config | Other | Decrypt Error Log**, by a Revfore Administrator - see [Other](../../../config/other.md#decrypt-error-log).
+
+- Only a **Revfore Administrator** can switch a values option on, because it captures real business data. Anyone who can
+  change debug settings can switch it off again.
+- Statements on settings and secrets are never logged with values, not even encrypted - their line shows
+  `values=redacted`. A statement with no parameters shows `values=none`.
+- Values longer than 200 characters are cut, with their full length shown.
+- Decrypting happens only in that Config page, inside OneStream - there is no other way to read the values, so log
+  entries can be shared, exported or attached to a support request without exposing them.
+- As with all debug options, set **Debug Until**, and turn the values option off when you have what you need.
 
 ### Filtering the output
 

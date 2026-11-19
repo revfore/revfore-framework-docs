@@ -177,7 +177,8 @@ Defines how a set of data is accessed — by a screen, an adapter, an API, an ag
 
 `ObjectCategoryId_IntegrationCode` sets what kind of view it is — a data entry view, a lookup view, a read-only view — which determines how it behaves and where it can be used.
 
-Optional `WhereClause` and `HavingClause` filter the view at the SQL level; `ParentViewId_IntegrationCode` makes it a child view of another.
+Optional `WhereClause` and `HavingClause` filter the view at the SQL level (values go in as Parameters, never as quoted
+text - see [Where Clause](../../appGroups/admin/relational/relationalViews/views.md#where-clause)); `ParentViewId_IntegrationCode` makes it a child view of another.
 
 ### View columns
 

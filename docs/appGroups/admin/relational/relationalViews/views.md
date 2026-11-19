@@ -121,6 +121,13 @@ A where clause can be applied at two different moments, and its **Flags** say wh
   "Flags": 2 }
 ```
 
+**What a clause may contain.** A clause is a condition on names - `{Column}` tokens, `[bracketed names]`,
+schema-token tables - and its **values always go in as Parameters**, as in the examples above (`{P1}`), never typed
+into the clause as quoted text. A clause is one condition, not a statement: it can't contain a quoted value, a second
+statement, a comment or a variable, and its parentheses must balance. A clause that breaks this is refused when it is
+saved or imported, and the message names the field and the reason. The same applies to filter expressions, lookup
+filters and a model source's additional join clause.
+
 !!!Note Workflow columns still belong on the view
     A workflow-enabled view keeps its cycle and unit columns, even if nobody looks at them: the Framework's own workflow filtering runs when the view is read, against those columns.
 
