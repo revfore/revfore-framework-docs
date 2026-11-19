@@ -1288,6 +1288,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3945,12 +3966,9 @@ the solution's code calls it <code>WfItemBranch</code>. There are two kinds:
 <li><strong>Promote To Master</strong> copies changes into master Working revisions (drivers: Drafts). It skips items master changed
     since the snapshot unless confirmed.</li>
 <li><strong>Discard</strong> clears the proposal's cube layer and frees it.</li>
-<li><strong>Picking a branch.</strong></li>
-<li>A workflow context handler adds <strong>Branch</strong> and <strong>Compare Branch 1 / 2</strong> to the Framework's Change Workflow dialog.
-    It keeps the picks on the user's workflow context.</li>
-<li>Grids follow the pick with no handler code, through a run-time where clause on <code>{WfExtInt_BP_Branch}</code> that calls
-    <code>BpBranchRevisions</code>.</li>
-<li>The cube views follow it through scope UD6 on the member sets.</li>
+<li><strong>Picking a branch.</strong> Branch and Compare Branch 1 / 2 are fields added to the Framework's Change Workflow dialog.
+  Grids follow the pick through a run-time filter on <code>{WfExtInt_BP_Branch}</code> that calls <code>BpBranchRevisions</code>. See
+  <a href="../workflow-context/">Workflow Context</a>.</li>
 <li><strong>A fixed UD6 member pool</strong> (<code>BpBranchMember</code>: V1-V3 and P1-P3, each with a <code>_Total</code> parent) is handed out in order.
   Opening a branch is refused when the pool is used up. See <a href="../layered-cube-posting/">Layered Cube Posting</a>.</li>
 </ul>

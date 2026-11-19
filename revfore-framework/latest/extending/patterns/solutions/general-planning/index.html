@@ -1297,6 +1297,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/workflow-context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3958,8 +3979,9 @@ own names say "forecast"; see <a href="../../#words-used">Words used</a>.</p>
   <a href="../../features/layered-cube-posting/">Layered Cube Posting</a>.</li>
 <li><strong>A stored plan summary</strong> per cycle and unit, rolled up the unit hierarchy and kept current on write. Reports,
   pivots and posting all read it. See <a href="../../features/stored-plan-summary/">Stored Plan Summary</a>.</li>
-<li><strong>Scenario comparison</strong> through the Framework's workflow compare-tos: a cycle plans Baseline and compares to the Plan and
-  Upside.</li>
+<li><strong>One workflow selection drives everything.</strong> Cycle, unit and two compare-tos are picked once in Change Workflow,
+  and every page follows. Business Planning extends the selection with a workflow scenario per planning scenario and a
+  plan branch beside each compare-to. See <a href="../../features/workflow-context/">Workflow Context</a>.</li>
 </ul>
 <p>The solution does <strong>not</strong> have plan-to-actual comparison. A cycle's <code>ActualEndPeriod</code> (a core column) only sets where
 the plan starts. It has no financial-statement engine either: accounts come from category member sets.</p>
@@ -4058,6 +4080,8 @@ the plan starts. It has no financial-statement engine either: accounts come from
 <li><a href="../../features/layered-cube-posting/">Layered Cube Posting</a>: add when scenarios or plan branches must be compared in the
   cube.</li>
 <li><a href="../../features/stored-plan-summary/">Stored Plan Summary</a>: needed at volume and for posting.</li>
+<li><a href="../../features/workflow-context/">Workflow Context</a>: the core is needed whenever there is more than one cycle or
+  unit. Its scenario and branch parts come with the patterns above.</li>
 </ul>
 <h2 id="adaptation-guidance">Adaptation guidance</h2>
 <ul>
