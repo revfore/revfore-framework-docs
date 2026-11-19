@@ -8,18 +8,18 @@ It brings together three things that are otherwise separate:
 
 - the **Claude skills**, already installed in the folder, so Claude Code knows the Framework's schema and conventions as soon as you open it
 - a **design area** (`solutions/`) for the design documents, workbooks and import JSON of each solution
-- a **buildable copy of the extension assembly**, `rfa_actnExtension_os`, which compiles against reference copies of the Revfore and OneStream APIs — their method signatures, without the code behind them — so a wrong name, argument or type shows up in the editor rather than in OneStream. You download it, and the Revfore references, from your own OneStream environment with OneStream Developer Studio, so the kit always matches the release you're running
+- a **buildable copy of the extension assembly**, `rfa_actnExtension_os`, which compiles against reference copies of the Revfore and OneStream APIs — their method signatures, without the code behind them — so a wrong name, argument or type shows up in the editor rather than in OneStream. You download it, the Revfore references and the OneStream reference assemblies from your own OneStream environment with OneStream Developer Studio, so the kit always matches the release you're running
 
-Nothing in the kit runs your code. The Revfore references are stubs generated from each release, where every method throws, and the OneStream references are OneStream's own reference assemblies, which you supply. A clean build therefore proves your code matches the APIs' shapes — names, parameter types and signatures — and nothing more. The logic itself is tested on a OneStream environment after you deploy.
+Nothing in the kit runs your code. The Revfore references are stubs generated from each release, where every method throws, and the OneStream references are OneStream's own reference assemblies, which you download under your own license. A clean build therefore proves your code matches the APIs' shapes — names, parameter types and signatures — and nothing more. The logic itself is tested on a OneStream environment after you deploy.
 
 ## Requirements
 
 | | |
 |---|---|
 | **VS Code** | With the **C# Dev Kit** extension, for editing and building the handlers |
-| **.NET SDK 10.0** or later | `dotnet build` compiles the extension assembly |
-| **OneStream reference assemblies** | `OneStream.Platform.ReferenceAssemblies.<version>.nupkg`, from OneStream. See [Adding the OneStream reference assemblies](#step-2-add-the-onestream-reference-assemblies) |
-| **OneStream Developer Studio** | OneStream's desktop app and its `ods` command line, for downloading the Revfore assemblies into the kit and pushing your code back. See [Downloading the assemblies](#step-3-download-the-assemblies-with-developer-studio) |
+| **.NET SDK** | The version your OneStream release targets: 8.0 or later for OneStream 9.2, 10.0 or later for 9.4. `dotnet build` compiles the extension assembly. See [The OneStream version and .NET version](#the-onestream-version-and-net-version) |
+| **OneStream reference assemblies** | `OneStream.Platform.ReferenceAssemblies.<version>.nupkg`, for your OneStream version, downloaded with Developer Studio. See [Downloading the assemblies](#step-2-download-the-assemblies-with-developer-studio) |
+| **OneStream Developer Studio** | OneStream's desktop app and its `ods` command line, for downloading the OneStream reference assemblies and the Revfore assemblies into the kit and pushing your code back. See [Downloading the assemblies](#step-2-download-the-assemblies-with-developer-studio) |
 | **Python 3.9+** | With `jsonschema` and `openpyxl` (`pip install jsonschema openpyxl`), for the validator and the design-workbook scripts |
 | **Claude Code** | In the terminal or the VS Code extension. It reads the skills from the kit folder |
 
@@ -47,7 +47,7 @@ MyProject/
 ├── RfaExtension.sln
 ├── Directory.Build.props      your OneStream version - yours to edit
 ├── nuget.config               points restore at packages/
-├── packages/                  put the OneStream package here
+├── packages/                  the OneStream package for your version - empty until you download it
 ├── rfa_actnExtension_os/      your extension code - empty until you download it
 ├── rfaRef/                    Revfore reference stubs - empty until you download them; never edit
 ├── samples/GLEntry/           a complete worked solution
@@ -57,42 +57,48 @@ MyProject/
 └── .claude/skills/            the Framework skills
 ```
 
-### Step 2: Add the OneStream reference assemblies
+### Step 2: Download the assemblies with Developer Studio
 
-The kit compiles against OneStream's official reference assemblies. **Revfore cannot redistribute this package**, so the kit does not include it. Get it from your OneStream channel under your own license.
+The kit ships without any assemblies. Everything it compiles against comes from your own environment through OneStream Developer Studio, so it always matches the release you're running:
 
-1. Copy `OneStream.Platform.ReferenceAssemblies.<version>.nupkg` into the kit's `packages/` folder
-2. If its version differs from the one in `Directory.Build.props`, edit that file to match:
+| Kit folder | What goes in it | Where it comes from |
+|---|---|---|
+| `packages/` | **OneStream reference assemblies** — `OneStream.Platform.ReferenceAssemblies.<version>.nupkg` | Developer Studio's **File \| Download OneStream Reference Assemblies**. **Revfore cannot redistribute this package**, so the kit does not include it |
+| `rfaRef/` | **rfaRef** — the Revfore reference stubs. Download only. Never edit or push it | The **XCP_xRfaDlg_ActnExtension** maintenance unit of your Revfore Framework workspace |
+| `rfa_actnExtension_os/` | **rfa_actnExtension_os** — the extension assembly, your handlers. Download it once, then push your changes back | The same maintenance unit |
+
+1. Install **OneStream Developer Studio** and sign in to your OneStream server
+2. Go to **File | Download OneStream Reference Assemblies**. Select the version that matches your OneStream release, set the destination folder to the kit's `packages/` folder, and click **Download**
+3. Register the kit folder as a Developer Studio repository, and map `rfaRef/` and `rfa_actnExtension_os/` to the two assembly folders above. To find both assemblies quickly, type or paste `XCP_xRfaDlg_ActnExtension` into the search text box. You can only add one at a time, so repeat the search after you add the first. Developer Studio writes a small mapping file into each folder (`.osconfig`)
+4. Pull both assemblies into their folders
+5. Start Claude Code in the kit folder and ask it to **hook up the project references**
+
+Step 5 is needed because the project files Developer Studio writes don't build as they are. Claude sets the target framework and adds the OneStream package reference to both, plus a reference from `rfa_actnExtension_os` to `rfaRef`. The kit's `CLAUDE.md` lists exactly what it changes.
+
+#### The OneStream version and .NET version
+
+Keep **one** version of the package in `packages/`, the one that matches your OneStream release. `Directory.Build.props` must name that same version and the .NET version it targets. The kit defaults to OneStream 9.2:
 
 ```xml
 <Project>
   <PropertyGroup>
-    <OneStreamReferenceAssembliesVersion>9.4.0.50904</OneStreamReferenceAssembliesVersion>
-    <OneStreamTargetFramework>net10.0</OneStreamTargetFramework>
+    <OneStreamReferenceAssembliesVersion>9.2.0.6496</OneStreamReferenceAssembliesVersion>
+    <OneStreamTargetFramework>net8.0</OneStreamTargetFramework>
   </PropertyGroup>
 </Project>
 ```
 
-`OneStreamTargetFramework` must match the framework folder under `ref/` inside the package. It only changes when OneStream moves to a new .NET version.
+The target framework follows the OneStream release, for example:
+
+| OneStream | `OneStreamTargetFramework` | .NET SDK needed |
+|---|---|---|
+| 9.2 | `net8.0` | 8.0 or later |
+| 9.4 | `net10.0` | 10.0 or later |
+
+You don't have to edit this yourself. When Claude hooks up the project references, it finds the package in `packages/` (and stops to ask if there's none, or more than one), reads the exact version and target framework from the package's `.nuspec`, updates `Directory.Build.props` and tells you if either changed, and checks that a matching .NET SDK is installed (`dotnet --list-sdks`). The `.nuspec` is the authority, not the file name. Ask Claude to check again whenever you replace the package, for example after a OneStream upgrade.
 
 !!! tip "Using your own NuGet feed"
-    If your organization already hosts the package on an internal feed, add that feed to `nuget.config` instead of copying the file. Keep the `packageSourceMapping` entry and point it at your feed. Machines that use package source mapping will otherwise fail restore with **NU1100**.
-
-### Step 3: Download the assemblies with Developer Studio
-
-The kit ships `rfaRef/` and `rfa_actnExtension_os/` **empty**. Their code comes from your OneStream environment, so it always matches the release you're running. Both assemblies are in the **XCP_xRfaDlg_ActnExtension** maintenance unit of your Revfore Framework workspace:
-
-| Kit folder | Assembly | What it is |
-|---|---|---|
-| `rfaRef/` | **rfaRef** | The Revfore reference stubs. Download only. Never edit or push it |
-| `rfa_actnExtension_os/` | **rfa_actnExtension_os** | The extension assembly — your handlers. Download it once, then push your changes back |
-
-1. Install **OneStream Developer Studio** and sign in to your OneStream server
-2. Register the kit folder as a Developer Studio repository, and map `rfaRef/` and `rfa_actnExtension_os/` to the two assembly folders above. To find both assemblies quickly, type or paste `XCP_xRfaDlg_ActnExtension` into the search text box. You can only add one at a time, so repeat the search after you add the first. Developer Studio writes a small mapping file into each folder (`.osconfig`)
-3. Pull both assemblies into their folders
-4. Start Claude Code in the kit folder and ask it to **hook up the project references**
-
-Step 4 is needed because the project files Developer Studio writes don't build as they are. Claude sets the target framework and adds the OneStream package reference to both, plus a reference from `rfa_actnExtension_os` to `rfaRef`. The kit's `CLAUDE.md` lists exactly what it changes.
+    If your organization already hosts the package on an internal feed, add that feed to `nuget.config` instead of downloading the file. Keep the `packageSourceMapping` entry and point it at your feed. Machines that use package source mapping will otherwise fail restore with **NU1100**.
 
 !!! tip "Let Claude drive Developer Studio's command line"
     Developer Studio installs a command line, `ods`. Run `ods agent skill init cli --tool claude` in the kit folder to give Claude Code ODS's own skill for it, then restart Claude Code. Claude can then check the setup (`ods status`, `ods validate`) and preview a push or pull on its own. Anything that writes to OneStream or overwrites your files — `push`, `pull`, `load`, `extract` — always waits for your confirmation. Signing in is interactive, so you run that yourself: `! ods connect https://<server>:<port>` in Claude Code's prompt.
@@ -250,7 +256,7 @@ The build compiles against **reference stubs**, not the real Revfore engine. `rf
 
 The kit doesn't publish anything itself. There are two ways to get your changes into OneStream:
 
-- **With OneStream Developer Studio** — the usual way, since the kit folder is already mapped to the assembly from [Step 3](#step-3-download-the-assemblies-with-developer-studio). See below.
+- **With OneStream Developer Studio** — the usual way, since the kit folder is already mapped to the assembly from [Step 2](#step-2-download-the-assemblies-with-developer-studio). See below.
 - **Manually**, by copying the files into the workspace — the steps under [Deploying manually](#deploying-manually).
 
 Either way, deploy the same files to the same place: the **rfa_actnExtension_os** assembly in the **XCP_xRfaDlg_ActnExtension** maintenance unit, plus any **XCP_x** units of your own.
@@ -293,11 +299,13 @@ The skills describe the schema and conventions of the release they shipped with,
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| **NU1101** Unable to find package OneStream.Platform.ReferenceAssemblies | The package isn't in `packages/`, or its version doesn't match `Directory.Build.props` | Copy the `.nupkg` in, or correct the version |
+| **NU1101** Unable to find package OneStream.Platform.ReferenceAssemblies | The package isn't in `packages/`, or its version doesn't match `Directory.Build.props` | Download the package into `packages/`, or ask Claude to check the project references so it corrects the version |
+| **NU1603** (a different package version was resolved), followed by **NU1202** (package not compatible with the target framework) | `Directory.Build.props` names a version that isn't in `packages/`, so restore picks up the version that is there, which targets a different .NET version. For example, the props file says 9.2 / `net8.0` but `packages/` holds the 9.4 package, which targets `net10.0` | Keep only the package for your OneStream version in `packages/`, then ask Claude to check the project references so `Directory.Build.props` matches it. See [The OneStream version and .NET version](#the-onestream-version-and-net-version) |
+| **NETSDK1045** The current .NET SDK does not support targeting ... | The .NET SDK installed is older than the package's target framework | Install the SDK for that .NET version |
 | **NU1100** Unable to resolve ... | Package source mapping on your machine blocks the source | Keep the `packageSourceMapping` entry in `nuget.config`, pointed at whichever source holds the package |
 | **CS0117** '*Type*' does not contain a definition for '*Member*' | Your code uses an API that is newer than the kit's stubs | Update to the kit for your Framework release. If you already have it, send the error and your `KIT_VERSION` line to Revfore |
 | A type named in the documentation is missing entirely | Same as above: the kit is behind your release | As above |
-| The build reports a missing project, or finds no Revfore types | `rfaRef/` or `rfa_actnExtension_os/` hasn't been downloaded yet, or the project references aren't hooked up | Download both with Developer Studio ([Step 3](#step-3-download-the-assemblies-with-developer-studio)), then ask Claude to hook up the project references |
+| The build reports a missing project, or finds no Revfore types | `rfaRef/` or `rfa_actnExtension_os/` hasn't been downloaded yet, or the project references aren't hooked up | Download both with Developer Studio ([Step 2](#step-2-download-the-assemblies-with-developer-studio)), then ask Claude to hook up the project references |
 | The build broke straight after a pull | The pull replaced the project files, removing the references | Ask Claude to hook up the project references again |
 | Duplicate OneStream types, or a restore error naming `OneStream.ReferenceAssemblies` | A second OneStream package was added to a project, for example by following Developer Studio's own reference-assembly steps | Remove it. The kit already references `OneStream.Platform.ReferenceAssemblies` through `Directory.Build.props` and `packages/` |
 | A handler you pushed never runs | It isn't registered in `ExtensionHandlerDispatcher.cs` | Register it, build, and push again |
